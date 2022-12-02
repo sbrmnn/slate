@@ -2,21 +2,15 @@
 title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
-includes:
-  - errors
-
 search: true
 
-code_clipboard: true
+code_clipboard: false
 
 meta:
   - name: description
@@ -25,221 +19,407 @@ meta:
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+API documentation for Asteroid.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+#  Authentication
+## Login
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
+> 200 OK
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNSwiZXhwaXJlc19hdCI6IjIwMjItMTEtMjQgMTg6NDc6NDIgVVRDIn0.K1Y3HB0ljH-DmIVUBX7ggc3J4WUe6z3b4kHmYexHImY",
+    "signInPath": "/pet/ally_test/sign_in",
+    "id": 25,
+    "name": "Jeremy Mickelson",
+    "email": "jeremy@test.com",
+    "googleApiKey": null,
+    "clientId": "1",
+    "primaryRole": "pet",
+    "roles": [
+        "client"
+    ],
+    "practiceId": 1,
+    "practiceName": "AllyDVM Test Practice",
+    "practicePms": "Vetter",
+    "practiceSms": null,
+    "practiceFeatures": [
+        "comm_engine",
+        "retention_calendar",
+        "online_patient_portal",
+        "pet_page_app",
+        "loyalty_program",
+        "html_editor",
+        "caller_id",
+        "analytics",
+        "two_way_texting",
+        "net_promoter_score",
+        "writebacks",
+        "experimental",
+        "telemedicine"
+    ],
+    "sourceId": 1,
+    "timeZone": "America/New_York",
+    "enterpriseIds": [
+        1123,
+        5813,
+        5827,
+        2134,
+        1,
+        61
+    ],
+    "timezone": "America/New_York"
+}
 ```
 
-This endpoint retrieves all kittens.
+> 401 Unauthorized
+
+```json
+{
+    "error": "Invalid email or password."
+}
+```
+
+
+Authenticate a user with their email and password and recieve a authentication token
+that can be used with other endpoints that retrieve user related data. 
+
+### Headers
+`Accept: application/json`
+
+`Content-Type: application/json`
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://connect.allydvm.com/users/sign_in`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+user[email] | true | Email address of user.
+user[password] | true | Password of user.
+
+
+## Change Password
+
+> 200 OK
+
+```json
+{
+    "signInPath": "/pet/ally_test/sign_in",
+    "id": 25,
+    "name": "Jeremy Mickelson",
+    "email": "jeremy@test.com",
+    "googleApiKey": null,
+    "clientId": "1",
+    "primaryRole": "pet",
+    "roles": [
+        "client"
+    ],
+    "practiceId": 1,
+    "practiceName": "AllyDVM Test Practice",
+    "practicePms": "Vetter",
+    "practiceSms": null,
+    "practiceFeatures": [
+        "comm_engine",
+        "retention_calendar",
+        "online_patient_portal",
+        "pet_page_app",
+        "loyalty_program",
+        "html_editor",
+        "caller_id",
+        "analytics",
+        "two_way_texting",
+        "net_promoter_score",
+        "writebacks",
+        "experimental",
+        "telemedicine"
+    ],
+    "sourceId": 1,
+    "timeZone": "America/New_York",
+    "enterpriseIds": [
+        1123,
+        5813,
+        5827,
+        2134,
+        1,
+        61
+    ]
+}
+```
+
+> 422 Unprocessable Entity
+
+```json
+{
+    "errors": {
+        "password_confirmation": [
+            "can't be blank"
+        ],
+        "password": [
+            "should be different than your current password"
+        ],
+        "current_password": [
+            "can't be blank",
+            "is invalid"
+        ]
+    }
+}
+```
+
+Change a user's password with their current password, new password, and new passsword confirmation. 
+
+### Headers
+`Accept: application/json`
+
+`Content-Type: application/json`
+
+`Authorization: Bearer < TOKEN FROM SIGN IN >` [Get token from here](#login)
+
+
+### HTTP Request
+
+`PUT https://connect.allydvm.com/users/`
+
+### Request Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+user[current_password] | true | Current password of user.
+user[password] | true | New password for user.
+user[password_confirmation] | true | New password confirmation for user.
+
+# User 
+## User Info
+
+> 200 Ok
+
+```json
+{
+    "signInPath": "/pet/ally_test/sign_in",
+    "id": 25,
+    "name": "Jeremy Mickelson",
+    "email": "jeremy@test.com",
+    "googleApiKey": null,
+    "clientId": "1",
+    "primaryRole": "pet",
+    "roles": [
+        "client"
+    ],
+    "practiceId": 1,
+    "practiceName": "AllyDVM Test Practice",
+    "practicePms": "Vetter",
+    "practiceSms": null,
+    "practiceFeatures": [
+        "comm_engine",
+        "retention_calendar",
+        "online_patient_portal",
+        "pet_page_app",
+        "loyalty_program",
+        "html_editor",
+        "caller_id",
+        "analytics",
+        "two_way_texting",
+        "net_promoter_score",
+        "writebacks",
+        "experimental",
+        "telemedicine"
+    ],
+    "sourceId": 1,
+    "timeZone": "America/New_York",
+    "enterpriseIds": [
+        1123,
+        5813,
+        5827,
+        2134,
+        1,
+        61
+    ]
+}
+```
+
+Get information about a user. 
+
+### Headers
+`Accept: application/json`
+
+`Content-Type: application/json`
+
+`Authorization: Bearer < TOKEN FROM SIGN IN >` [Get token from here](#login)
+
+
+### HTTP Request
+
+`GET https://connect.allydvm.com/users/current`
+
+### Request Parameters
+
+None
+
+
+# Terms 
+
+## Accept Terms for API use
+> 200 Ok
+
+```json
+{
+    "success": "success"
+}
+```
+
+Accept terms and conditions so the user can access a greater number of API endpoints.
+
+### Headers
+`Accept: application/json`
+
+`Content-Type: application/json`
+
+`Authorization: Bearer < TOKEN FROM SIGN IN >` [Get token from here](#login)
+
+### HTTP Request
+
+`POST https://connect.allydvm.com/terms`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+terms[accept] | true | Accept terms for user.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
-## Get a Specific Kitten
 
-```ruby
-require 'kittn'
+# Client
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+## Get All Clients 
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> 200 OK
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+    "sourceId": 1,
+    "clientId": "1",
+    "practiceId": 1,
+    "fingerprint": 1,
+    "clientClassId": "cool_clients",
+    "firstSyncedAt": "2022-12-01T15:50:30.000Z",
+    "lastSyncedAt": "2022-12-01T15:50:30.000Z",
+    "createdAt": "2022-12-01T15:50:30.000Z",
+    "updatedAt": "2022-12-01T15:50:30.000Z",
+    "displayId": "1",
+    "firstName": "Jeremy",
+    "lastName": "Mickelson",
+    "address": "Address",
+    "city": "City",
+    "state": "CA",
+    "postalCode": "12345",
+    "email": "jeremy@test.com",
+    "homePhone": "9096480002",
+    "workPhone": "9096480003",
+    "mobilePhone": "8012223333",
+    "status": "active",
+    "balanceDue": 23871,
+    "communicationsDisabled": "enabled",
+    "emailVerificationStatus": "verified",
+    "emailVerificationResponse": {},
+    "emailVerifiedAt": null,
+    "emailPrior": null,
+    "alertsDisabled": false,
+    "emailAlertDisabled": false,
+    "smsAlertDisabled": false,
+    "badPhysicalAddress": false,
+    "fullAddressPrior": "",
+    "loyaltyInvoiceProcessingEndedAt": null,
+    "loyaltyInvoiceProcessingRemainder": null,
+    "loyaltyToggle": false,
+    "clientClass": {
+        "clientClassId": "cool_clients",
+        "sourceId": 1,
+        "description": "Cool Clients",
+        "communicationsDisabled": "enabled"
+    },
+    "patients": [
+        {
+            "sourceId": 1,
+            "patientId": "pi",
+            "practiceId": 1,
+            "name": "Pi",
+            "displayId": null,
+            "deceasedDate": null,
+            "status": "active"
+        },
+        {
+            "sourceId": 1,
+            "patientId": "xzy-abc-12345-00001",
+            "practiceId": 1,
+            "name": "Brownie",
+            "displayId": null,
+            "deceasedDate": "2022-12-01",
+            "status": "active"
+        },
+        {
+            "sourceId": 1,
+            "patientId": "12000",
+            "practiceId": 1,
+            "name": "Oreo",
+            "displayId": null,
+            "deceasedDate": null,
+            "status": "active"
+        },
+        {
+            "sourceId": 1,
+            "patientId": "12001",
+            "practiceId": 1,
+            "name": "Dusty",
+            "displayId": null,
+            "deceasedDate": null,
+            "status": "active"
+        },
+        {
+            "sourceId": 1,
+            "patientId": "12002",
+            "practiceId": 1,
+            "name": "Goldilocks",
+            "displayId": null,
+            "deceasedDate": null,
+            "status": "inactive"
+        },
+        {
+            "sourceId": 1,
+            "patientId": "12003",
+            "practiceId": 1,
+            "name": "Tweets",
+            "displayId": null,
+            "deceasedDate": null,
+            "status": "active"
+        },
+        {
+            "sourceId": 1,
+            "patientId": "12004",
+            "practiceId": 1,
+            "name": "Name",
+            "displayId": null,
+            "deceasedDate": null,
+            "status": "active"
+        }
+    ],
+    "primaryPractice": "AllyDVM Test Practice",
+    "petRecordsStatus": "Active"
 }
 ```
+This endpoint retrieves all clients.
 
-This endpoint retrieves a specific kitten.
+**Must accept [terms](#terms) before using this endpoint.**
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+### Headers
+`Accept: application/json`
+
+`Content-Type: application/json`
+
+`Authorization: Bearer < TOKEN FROM SIGN IN >` [Get token from here](#login)
+
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+`GET https://connect.allydvm.com/clients`
