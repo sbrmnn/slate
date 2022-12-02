@@ -1,0 +1,757 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Kittn API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
+
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-cc733576.png" class="logo" alt="" />
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                  </li>
+                  <li>
+                    <a href="#change-password" class="toc-h2 toc-link" data-title="Change Password">Change Password</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#user-info" class="toc-h2 toc-link" data-title="User Info">User Info</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#terms" class="toc-h1 toc-link" data-title="Terms">Terms</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#accept-terms-for-api-use" class="toc-h2 toc-link" data-title="Accept Terms for API use">Accept Terms for API use</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#client" class="toc-h1 toc-link" data-title="Client">Client</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-clients" class="toc-h2 toc-link" data-title="Get All Clients">Get All Clients</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>API documentation for Asteroid.</p>
+<h1 id='authentication'>Authentication</h1><h2 id='login'>Login</h2>
+<blockquote>
+<p>200 OK</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNSwiZXhwaXJlc19hdCI6IjIwMjItMTEtMjQgMTg6NDc6NDIgVVRDIn0.K1Y3HB0ljH-DmIVUBX7ggc3J4WUe6z3b4kHmYexHImY"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signInPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pet/ally_test/sign_in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy Mickelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeremy@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"googleApiKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primaryRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"client"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllyDVM Test Practice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practicePms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vetter"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"comm_engine"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"retention_calendar"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"online_patient_portal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pet_page_app"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"loyalty_program"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"html_editor"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"caller_id"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"analytics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"two_way_texting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"net_promoter_score"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"writebacks"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"experimental"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telemedicine"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enterpriseIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1123</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5813</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5827</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2134</span><span class="p">,</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">61</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Unauthorized</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid email or password."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Authenticate a user with their email and password and recieve a authentication token
+that can be used with other endpoints that retrieve user related data. </p>
+<h3 id='headers'>Headers</h3>
+<p><code>Accept: application/json</code></p>
+
+<p><code>Content-Type: application/json</code></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://connect.allydvm.com/users/sign_in</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user[email]</td>
+<td>true</td>
+<td>Email address of user.</td>
+</tr>
+<tr>
+<td>user[password]</td>
+<td>true</td>
+<td>Password of user.</td>
+</tr>
+</tbody></table>
+<h2 id='change-password'>Change Password</h2>
+<blockquote>
+<p>200 OK</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"signInPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pet/ally_test/sign_in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy Mickelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeremy@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"googleApiKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primaryRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"client"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllyDVM Test Practice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practicePms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vetter"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"comm_engine"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"retention_calendar"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"online_patient_portal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pet_page_app"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"loyalty_program"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"html_editor"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"caller_id"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"analytics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"two_way_texting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"net_promoter_score"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"writebacks"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"experimental"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telemedicine"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enterpriseIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1123</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5813</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5827</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2134</span><span class="p">,</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">61</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>422 Unprocessable Entity</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"password_confirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"can't be blank"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"should be different than your current password"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"current_password"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"can't be blank"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is invalid"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Change a user&#39;s password with their current password, new password, and new passsword confirmation. </p>
+<h3 id='headers-2'>Headers</h3>
+<p><code>Accept: application/json</code></p>
+
+<p><code>Content-Type: application/json</code></p>
+
+<p><code>Authorization: Bearer &lt; TOKEN FROM SIGN IN &gt;</code> <a href="#login">Get token from here</a></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PUT https://connect.allydvm.com/users/</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user[current_password]</td>
+<td>true</td>
+<td>Current password of user.</td>
+</tr>
+<tr>
+<td>user[password]</td>
+<td>true</td>
+<td>New password for user.</td>
+</tr>
+<tr>
+<td>user[password_confirmation]</td>
+<td>true</td>
+<td>New password confirmation for user.</td>
+</tr>
+</tbody></table>
+<h1 id='user'>User</h1><h2 id='user-info'>User Info</h2>
+<blockquote>
+<p>200 Ok</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"signInPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/pet/ally_test/sign_in"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy Mickelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeremy@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"googleApiKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primaryRole"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pet"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"client"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllyDVM Test Practice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practicePms"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vetter"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceSms"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceFeatures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"comm_engine"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"retention_calendar"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"online_patient_portal"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pet_page_app"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"loyalty_program"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"html_editor"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"caller_id"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"analytics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"two_way_texting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"net_promoter_score"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"writebacks"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"experimental"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"telemedicine"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enterpriseIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1123</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5813</span><span class="p">,</span><span class="w">
+        </span><span class="mi">5827</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2134</span><span class="p">,</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">61</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get information about a user. </p>
+<h3 id='headers-3'>Headers</h3>
+<p><code>Accept: application/json</code></p>
+
+<p><code>Content-Type: application/json</code></p>
+
+<p><code>Authorization: Bearer &lt; TOKEN FROM SIGN IN &gt;</code> <a href="#login">Get token from here</a></p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://connect.allydvm.com/users/current</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<p>None</p>
+<h1 id='terms'>Terms</h1><h2 id='accept-terms-for-api-use'>Accept Terms for API use</h2>
+<blockquote>
+<p>200 Ok</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Accept terms and conditions so the user can access a greater number of API endpoints.</p>
+<h3 id='headers-4'>Headers</h3>
+<p><code>Accept: application/json</code></p>
+
+<p><code>Content-Type: application/json</code></p>
+
+<p><code>Authorization: Bearer &lt; TOKEN FROM SIGN IN &gt;</code> <a href="#login">Get token from here</a></p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://connect.allydvm.com/terms</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>terms[accept]</td>
+<td>true</td>
+<td>Accept terms for user.</td>
+</tr>
+</tbody></table>
+<h1 id='client'>Client</h1><h2 id='get-all-clients'>Get All Clients</h2>
+<blockquote>
+<p>200 OK</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientClassId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cool_clients"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstSyncedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01T15:50:30.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSyncedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01T15:50:30.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01T15:50:30.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01T15:50:30.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jeremy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mickelson"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Address"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"City"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jeremy@test.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"homePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9096480002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"workPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9096480003"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobilePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8012223333"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balanceDue"</span><span class="p">:</span><span class="w"> </span><span class="mi">23871</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"communicationsDisabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emailVerificationStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emailVerificationResponse"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nl">"emailVerifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emailPrior"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alertsDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emailAlertDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"smsAlertDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"badPhysicalAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullAddressPrior"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loyaltyInvoiceProcessingEndedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loyaltyInvoiceProcessingRemainder"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"loyaltyToggle"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"clientClass"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"clientClassId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cool_clients"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cool Clients"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"communicationsDisabled"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"patients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pi"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pi"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deceasedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xzy-abc-12345-00001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brownie"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deceasedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oreo"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deceasedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dusty"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deceasedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Goldilocks"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deceasedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12003"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tweets"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deceasedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sourceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"patientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12004"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"practiceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"displayId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deceasedDate"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"primaryPractice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AllyDVM Test Practice"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"petRecordsStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all clients.</p>
+
+<p><strong>Must accept <a href="#terms">terms</a> before using this endpoint.</strong></p>
+<h3 id='headers-5'>Headers</h3>
+<p><code>Accept: application/json</code></p>
+
+<p><code>Content-Type: application/json</code></p>
+
+<p><code>Authorization: Bearer &lt; TOKEN FROM SIGN IN &gt;</code> <a href="#login">Get token from here</a></p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://connect.allydvm.com/clients</code></p>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
